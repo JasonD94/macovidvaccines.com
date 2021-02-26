@@ -54,17 +54,16 @@ export default function ButtonAppBar() {
         <nav className={classes.root}>
             <AppBar position="static" component="div">
                 <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="menu"
-                        aria-controls="simple-menu"
-                        aria-haspopup="true"
-                        onClick={handleClick}
+                    <Button
+                        className={classes.buttonText}
+                        onClick={() => {
+                            handleClose();
+                            setAboutOpen(true);
+                        }}
                     >
-                        <MenuIcon />
-                    </IconButton>
+                        About
+                    </Button>
+
                     <Button
                         className={classes.buttonText}
                         href="https://www.gofundme.com/f/wwwmacovidvaccinescom?utm_source=customer&utm_medium=copy_link&utm_campaign=p_cf+share-flow-1"
@@ -73,42 +72,25 @@ export default function ButtonAppBar() {
                     >
                         Contribute
                     </Button>
-                </Toolbar>
-            </AppBar>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                <MenuItem
-                    onClick={() => {
-                        handleClose();
-                        setAboutOpen(true);
-                    }}
-                >
-                    About
-                </MenuItem>
-                <MenuItem
-                    onClick={() => {
-                        handleClose();
-                        setResourcesOpen(true);
-                    }}
-                >
-                    Resources
-                </MenuItem>
-                <MenuItem>
-                    <a
-                        href={
-                            "mailto:macovidvaccines@gmail.com?subject=Site feedback"
-                        }
-                        className={classes.unstyledLink}
+
+                    <Button
+                        className={classes.buttonText}
+                        onClick={() => {
+                            handleClose();
+                            setResourcesOpen(true);
+                        }}
+                    >
+                        Resources
+                    </Button>
+
+                    <Button
+                        className={classes.buttonText}
+                        href="mailto:macovidvaccines@gmail.com?subject=Site feedback"
                     >
                         Give feedback
-                    </a>
-                </MenuItem>
-            </Menu>
+                    </Button>
+                </Toolbar>
+            </AppBar>
             <AboutDialog open={aboutOpen} onClose={() => setAboutOpen(false)} />
             <ResourcesDialog
                 open={resourcesOpen}
